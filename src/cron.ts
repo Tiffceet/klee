@@ -4,10 +4,13 @@ import {
   flushUserMessagesCounterCache,
   userMessagesCounterCache,
 } from "./globals";
+import { initServerEvent } from "./controllers/serverEvent";
 const eventJob = new CronJob(
-  "* */15 * * * *",
+  // "*/15 47 * * * *",
+  "0 */15 * * * *",
   function () {
-    // console.log("You will see this message every second");
+    console.log("Initiating server event...")
+    initServerEvent();
   },
   null,
   true,

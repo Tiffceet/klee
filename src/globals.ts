@@ -1,8 +1,13 @@
-import { Guild } from "@prisma/client";
+import { Guild, GuildConfig } from "@prisma/client";
 import { getAllGuilds } from "./services/guild";
 import { addBalance, getWallet, updateWallet } from "./services/wallet";
 
-export const discordGuilds: Record<string, Guild> = {};
+export const discordGuilds: Record<
+  string,
+  Guild & {
+    guildConfig: GuildConfig | null;
+  }
+> = {};
 
 interface UserCache {
   messageCount: number;

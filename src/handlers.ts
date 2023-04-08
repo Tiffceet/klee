@@ -17,6 +17,9 @@ export async function onceClientReady(client: Client<true>) {
 export function onMessageCreate(message: Message) {
   if (!message.guildId) return;
   if (message.author.bot) return;
+
+  // TODO: Check if user is in earning channels first
+
   if (!userMessagesCounterCache.guilds[message.guildId]) {
     userMessagesCounterCache.guilds[message.guildId] = {
       users: {},

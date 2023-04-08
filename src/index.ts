@@ -11,7 +11,11 @@ import {
 
 // Create a new client instance
 const client = new Client({
-  intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages],
+  intents: [
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.MessageContent,
+  ],
 });
 
 // Client events
@@ -24,3 +28,5 @@ startAllCronJobs();
 
 // Log in to Discord with your client's token
 client.login(process.env.TOKEN);
+
+export { client };
