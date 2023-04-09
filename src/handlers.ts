@@ -1,5 +1,9 @@
 import * as commands from "./commands";
-import { setupGlobalStore, userMessagesCounterCache } from "./globals";
+import {
+  discordGuilds,
+  setupGlobalStore,
+  userMessagesCounterCache,
+} from "./globals";
 import { Command } from "./interfaces/Command";
 import {
   Client,
@@ -18,7 +22,15 @@ export function onMessageCreate(message: Message) {
   if (!message.guildId) return;
   if (message.author.bot) return;
 
-  // TODO: Check if user is in earning channels first
+  // Check if user is in earning channels first
+  if (!discordGuilds[message.guildId]) return;
+  if (!discordGuilds[message.guildId].guildConfig) return;
+  if (
+    !discordGuilds[message.guildId].guildConfig?.earningChannelIds.includes(
+      message.channelId
+    )
+  )
+    return;
 
   if (!userMessagesCounterCache.guilds[message.guildId]) {
     userMessagesCounterCache.guilds[message.guildId] = {
@@ -35,9 +47,8 @@ export function onMessageCreate(message: Message) {
       };
   }
 
-  userMessagesCounterCache.guilds[message.guildId].users[
-    message.author.id
-  ].messageCount++;
+  userMessagesCounterCache.guilds[message.guildId].users[message.author.id]
+    .messageCount++;
 }
 
 export function onInteractionCreate(interaction: Interaction) {

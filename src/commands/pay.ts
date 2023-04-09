@@ -63,8 +63,6 @@ export const pay: Command = {
       return interaction.editReply("You do not have enough coins.");
     }
 
-    // TODO: Prompt user
-    // TODO: Implement onButtonInteraction on Command interface
     const row = new ActionRowBuilder<ButtonBuilder>()
       .addComponents(
         new ButtonBuilder()

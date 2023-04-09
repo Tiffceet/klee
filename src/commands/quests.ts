@@ -6,6 +6,7 @@ export const quests: Command = {
     .setName("quests")
     .setDescription("Replies with Pong!"),
   execute: async (interaction: CommandInteraction) => {
+    // TODO: Implement view quests
     await interaction.reply("Pong!");
   },
 };
