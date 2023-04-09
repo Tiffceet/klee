@@ -30,7 +30,9 @@ export async function flushUserMessagesCounterCache() {
         const wallet = await getWallet(discordGuildId, userId);
         await updateWallet(discordGuildId, userId, {
           messagesSent: wallet.messagesSent + messageCount,
+          dailyMessagesSent: wallet.dailyMessagesSent + messageCount,
         });
+        // TODO: If user reached quest target, reward user
 
         // Clear user messsage count cache
         delete userMessagesCounterCache.guilds[discordGuildId].users[userId];

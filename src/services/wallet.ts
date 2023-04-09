@@ -24,6 +24,7 @@ export async function createWallet(discordGuildId: string, userId: string) {
       balance: 0,
       messagesSent: 0,
       userReputation: 0,
+      dailyMessagesSent: 0,
     },
   });
 }
@@ -90,6 +91,14 @@ export async function removeBalance(
     },
     where: {
       id: wallet.id,
+    },
+  });
+}
+
+export async function resetAllDailyMessagesSent() {
+  await prisma.wallet.updateMany({
+    data: {
+      dailyMessagesSent: 0,
     },
   });
 }

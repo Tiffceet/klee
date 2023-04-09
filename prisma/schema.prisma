@@ -26,12 +26,13 @@ model GuildConfig {
 }
 
 model Wallet {
-  id             String @id @default(auto()) @map("_id") @db.ObjectId
-  userId         String
-  balance        Int
-  discordGuildId String
-  messagesSent   Int
-  userReputation Int
+  id                String @id @default(auto()) @map("_id") @db.ObjectId
+  userId            String
+  balance           Int
+  discordGuildId    String
+  messagesSent      Int
+  userReputation    Int
+  dailyMessagesSent Int
 
   @@unique([userId, discordGuildId])
 }
