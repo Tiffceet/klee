@@ -59,4 +59,6 @@ export async function executeGuessNameEvent(
 export async function executeCountNumberEvent(
   discordGuildId: string,
   channelId: string
-) {}
+) {
+  // TODO: Missing implentation
+}

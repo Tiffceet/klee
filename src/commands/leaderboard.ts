@@ -6,6 +6,7 @@ export const leaderboard: Command = {
     .setName("leaderboard")
     .setDescription("Replies with Pong!"),
   execute: async (interaction: CommandInteraction) => {
+    // TODO: Impl leaderboard
     await interaction.reply("Pong!");
   },
 };
